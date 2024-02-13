@@ -54,3 +54,14 @@ func (s *ShiprocketServiceImpl) GetAvailableCouriers(request apimodel.CourierAva
 
 	return &response, nil
 }
+
+func (s *ShiprocketServiceImpl) GetAvailableCouriers2(request apimodel.CourierAvailabityRequest, config apimodel.Config, token string) (*http.Response, error) {
+	// Create a new request
+	resp, err := SendRequest("GET", "/v1/external/courier/serviceability/", config.BaseURL, token, request)
+	if err != nil {
+		return nil, err
+	}
+
+	defer resp.Body.Close()
+	return resp, nil
+}
