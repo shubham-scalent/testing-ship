@@ -39,7 +39,7 @@ func (s *ShiprocketServiceImpl) GetToken(config apimodel.Config) (string, error)
 
 func (s *ShiprocketServiceImpl) GetAvailableCouriers(request apimodel.CourierAvailabityRequest, config apimodel.Config, token string) (string, error) {
 	// Create a new request
-	resp, err := SendRequest("GET", "/v1/external/courier/courierListWithCounts", config.BaseURL, token, request)
+	resp, err := SendRequest("GET", "/v1/external/courier/serviceability/", config.BaseURL, token, request)
 	if err != nil {
 		return "", err
 	}
