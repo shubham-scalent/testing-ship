@@ -30,7 +30,7 @@ func ShiprocketCli(ctx context.Context, config apimodel.Config) (*ShiprocketClie
 		fmt.Println("err", err)
 	}
 
-	ShiprocketClient.Token, err = ShiprocketClient.Options.ShiprocketService.GetToken(config.BaseURL, config.Email, config.Password)
+	ShiprocketClient.Token, err = ShiprocketClient.Options.ShiprocketService.GetToken(config)
 	if err != nil {
 		log.Fatal(err)
 		fmt.Println("err", err)
