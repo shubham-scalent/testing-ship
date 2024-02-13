@@ -37,21 +37,20 @@ func (s *ShiprocketServiceImpl) GetToken(config apimodel.Config) (string, error)
 	return response.Token, err
 }
 
-func (s *ShiprocketServiceImpl) GetAvailableCouriers(request apimodel.CourierAvailabityRequest, config apimodel.Config, token string) (string, error) {
+func (s *ShiprocketServiceImpl) GetAvailableCouriers(request apimodel.CourierAvailabityRequest, config apimodel.Config, token string) (*apimodel.CourierAvailabityResponse, error) {
 	// Create a new request
 	resp, err := SendRequest("GET", "/v1/external/courier/serviceability/", config.BaseURL, token, request)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
 	defer resp.Body.Close()
 
-	var abc string
-	// var response ShippingAddressUpdateResponse
-	err = ReadResponse(resp, &abc)
+	var response apimodel.CourierAvailabityResponse
+	err = ReadResponse(resp, &response)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 
-	return abc, nil
+	return &response, nil
 }
