@@ -7,9 +7,9 @@ type Config struct {
 }
 
 type CourierAvailabityRequest struct {
-	PickupPostcode   int     `json:"pickupPostcode" binding:"omitempty"`
-	DeliveryPostcode int     `json:"deliveryPostcode" binding:"omitempty"`
-	OrderID          int     `json:"orderID"`
+	PickupPostcode   int     `json:"pickup_Postcode" binding:"omitempty"`
+	DeliveryPostcode int     `json:"delivery_Postcode" binding:"omitempty"`
+	OrderID          int     `json:"order_id"`
 	Cod              int     `json:"cod" binding:"omitempty"`
 	Weight           float64 `json:"weight" binding:"omitempty"`
 }
