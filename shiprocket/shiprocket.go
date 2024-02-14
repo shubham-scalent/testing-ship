@@ -1,7 +1,7 @@
-package pkg
+package shiprocket
 
 import (
-	"github.com/shubham-scalent/testing-ship/apimodel"
+	"github.com/shubham-scalent/testing-ship/shiprocket/apimodel"
 )
 
 type ShiprockertService interface {

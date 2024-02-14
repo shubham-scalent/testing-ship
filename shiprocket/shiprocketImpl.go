@@ -1,11 +1,11 @@
-package pkg
+package shiprocket
 
 import (
 	"bytes"
 	"encoding/json"
 	"net/http"
 
-	"github.com/shubham-scalent/testing-ship/apimodel"
+	"github.com/shubham-scalent/testing-ship/shiprocket/apimodel"
 )
 
 type ShiprocketServiceImpl struct {

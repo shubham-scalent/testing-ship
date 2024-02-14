@@ -5,12 +5,11 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/shubham-scalent/testing-ship/apimodel"
-	"github.com/shubham-scalent/testing-ship/pkg"
+	"github.com/shubham-scalent/testing-ship/shiprocket/apimodel"
 )
 
 type DependencyOptions struct {
-	ShiprocketService pkg.ShiprockertService
+	ShiprocketService ShiprockertService
 }
 
 type ShiprocketClient struct {
@@ -40,7 +39,7 @@ func ShiprocketCli(ctx context.Context, config apimodel.Config) (*ShiprocketClie
 }
 
 func initServer() (*ShiprocketClient, error) {
-	shiprocketServiceImpl, err := pkg.NewShiprocketServiceImpl()
+	shiprocketServiceImpl, err := NewShiprocketServiceImpl()
 	if err != nil {
 		return nil, err
 	}
