@@ -4,8 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"net/http"
-
-	"github.com/shubham-scalent/testing-ship/shiprocket/apimodel"
 )
 
 type ShiprocketServiceImpl struct {
@@ -15,7 +13,7 @@ func NewShiprocketServiceImpl() (*ShiprocketServiceImpl, error) {
 	return &ShiprocketServiceImpl{}, nil
 }
 
-func (s *ShiprocketServiceImpl) GetToken(config apimodel.Config) (string, error) {
+func (s *ShiprocketServiceImpl) GetToken(config ClientConfig) (string, error) {
 	data := map[string]string{
 		"email":    config.Email,
 		"password": config.Password,
@@ -32,12 +30,12 @@ func (s *ShiprocketServiceImpl) GetToken(config apimodel.Config) (string, error)
 	}
 	defer resp.Body.Close()
 
-	var response apimodel.AuthResponse
+	var response ClientResponse
 	err = json.NewDecoder(resp.Body).Decode(&response)
 	return response.Token, err
 }
 
-func (s *ShiprocketServiceImpl) GetAvailableCouriers(request apimodel.CourierAvailabityRequest, config apimodel.Config, token string) (*apimodel.CourierAvailabityResponse, error) {
+func (s *ShiprocketServiceImpl) GetAvailableCouriers(request CourierAvailabityRequest, config ClientConfig, token string) (*CourierAvailabityResponse, error) {
 	// Create a new request
 	resp, err := SendRequest("GET", "/v1/external/courier/serviceability/", config.BaseURL, token, request)
 	if err != nil {
@@ -46,7 +44,7 @@ func (s *ShiprocketServiceImpl) GetAvailableCouriers(request apimodel.CourierAva
 
 	defer resp.Body.Close()
 
-	var response apimodel.CourierAvailabityResponse
+	var response CourierAvailabityResponse
 	err = ReadResponse(resp, &response)
 	if err != nil {
 		return nil, err

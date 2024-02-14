@@ -4,8 +4,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-
-	"github.com/shubham-scalent/testing-ship/shiprocket/apimodel"
 )
 
 type DependencyOptions struct {
@@ -21,7 +19,7 @@ func NewShiprocketClient(Options DependencyOptions) *ShiprocketClient {
 	return &ShiprocketClient{Options: Options}
 }
 
-func ShiprocketCli(ctx context.Context, config apimodel.Config) (*ShiprocketClient, error) {
+func ShiprocketCli(ctx context.Context, config ClientConfig) (*ShiprocketClient, error) {
 
 	ShiprocketClient, err := initServer()
 	if err != nil {

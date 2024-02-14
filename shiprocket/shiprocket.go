@@ -1,10 +1,6 @@
 package shiprocket
 
-import (
-	"github.com/shubham-scalent/testing-ship/shiprocket/apimodel"
-)
-
 type ShiprockertService interface {
-	GetToken(config apimodel.Config) (string, error)
-	GetAvailableCouriers(request apimodel.CourierAvailabityRequest, config apimodel.Config, token string) (*apimodel.CourierAvailabityResponse, error)
+	GetToken(config ClientConfig) (string, error)
+	GetAvailableCouriers(request CourierAvailabityRequest, config ClientConfig, token string) (*CourierAvailabityResponse, error)
 }

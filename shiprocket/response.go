@@ -1,6 +1,6 @@
-package apimodel
+package shiprocket
 
-type AuthResponse struct {
+type ClientResponse struct {
 	Token string `json:"token"`
 }
 
