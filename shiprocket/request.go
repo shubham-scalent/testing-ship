@@ -1,9 +1,9 @@
 package shiprocket
 
 type CourierAvailabityRequest struct {
-	PickupPostcode   int `json:"pickup_postcode" binding:"omitempty"`
-	DeliveryPostcode int `json:"delivery_postcode" binding:"omitempty"`
-	// OrderID          int     `json:"order_id" binding:"omitempty"`
-	Cod    int     `json:"cod" binding:"omitempty"`
-	Weight float64 `json:"weight" binding:"omitempty"`
+	PickupPostcode   int     `json:"pickup_postcode" validate:"omitempty"`
+	DeliveryPostcode int     `json:"delivery_postcode" validate:"omitempty"`
+	OrderID          int     `json:"order_id" validate:"omitempty"`
+	Cod              int     `json:"cod" validate:"omitempty"`
+	Weight           float64 `json:"weight" validate:"omitempty"`
 }
