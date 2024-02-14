@@ -1,51 +1,51 @@
 package shiprocket
 
 import (
-	"context"
-	"fmt"
+	"bytes"
+	"encoding/json"
 	"log"
+	"net/http"
 )
 
-type DependencyOptions struct {
-	ShiprocketService ShiprockertService
-}
-
 type ShiprocketClient struct {
-	Options DependencyOptions
-	Token   string
+	config ClientConfig
+	token  tokenConfig
 }
 
-func NewShiprocketClient(Options DependencyOptions) *ShiprocketClient {
-	return &ShiprocketClient{Options: Options}
-}
+func NewShiprocketClient(config ClientConfig) *ShiprocketClient {
 
-func ShiprocketCli(ctx context.Context, config ClientConfig) (*ShiprocketClient, error) {
-
-	ShiprocketClient, err := initServer()
+	token, err := GetToken(config)
 	if err != nil {
 		log.Fatal(err)
-		fmt.Println("err", err)
+		return nil
 	}
 
-	ShiprocketClient.Token, err = ShiprocketClient.Options.ShiprocketService.GetToken(config)
-	if err != nil {
-		log.Fatal(err)
-		fmt.Println("err", err)
+	return &ShiprocketClient{
+		config: config,
+		token: tokenConfig{
+			Token: token,
+		},
 	}
-
-	return ShiprocketClient, nil
 }
 
-func initServer() (*ShiprocketClient, error) {
-	shiprocketServiceImpl, err := NewShiprocketServiceImpl()
+func GetToken(config ClientConfig) (string, error) {
+	data := map[string]string{
+		"email":    config.Email,
+		"password": config.Password,
+	}
+
+	jsonData, err := json.Marshal(data)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 
-	dependencyOptions := DependencyOptions{
-		ShiprocketService: shiprocketServiceImpl,
+	resp, err := http.Post(config.BaseURL+"/v1/external/auth/login", "application/json", bytes.NewBuffer(jsonData))
+	if err != nil {
+		return "", err
 	}
+	defer resp.Body.Close()
 
-	shiprocketClient := NewShiprocketClient(dependencyOptions)
-	return shiprocketClient, nil
+	var response ClientResponse
+	err = json.NewDecoder(resp.Body).Decode(&response)
+	return response.Token, err
 }
