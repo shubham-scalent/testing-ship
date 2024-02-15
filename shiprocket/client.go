@@ -3,29 +3,30 @@ package shiprocket
 import (
 	"bytes"
 	"encoding/json"
-	"log"
 	"net/http"
+	"time"
 )
 
 type ShiprocketClient struct {
-	config ClientConfig
-	token  tokenConfig
+	Config ClientConfig
+	Token  tokenConfig
 }
 
-func NewShiprocketClient(config ClientConfig) *ShiprocketClient {
+func NewShiprocketClient(config ClientConfig) (*ShiprocketClient, error) {
 
 	token, err := GetToken(config)
 	if err != nil {
-		log.Fatal(err)
-		return nil
+		return nil, err
 	}
 
 	return &ShiprocketClient{
-		config: config,
-		token: tokenConfig{
-			Token: token,
+		Config: config,
+		Token: tokenConfig{
+			Token:             token,
+			CreatedOn:         time.Now(),
+			NextRefreshOnTime: time.Now().Add(8 * time.Hour),
 		},
-	}
+	}, nil
 }
 
 func GetToken(config ClientConfig) (string, error) {
