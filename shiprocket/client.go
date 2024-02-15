@@ -12,6 +12,8 @@ type ShiprocketClient struct {
 	tokenConfig TokenConfig
 }
 
+var shiprocketClient ShiprocketClient
+
 func NewShiprocketClient(config ClientConfig) (*ShiprocketClient, error) {
 
 	token, err := GetToken(config)
@@ -19,14 +21,16 @@ func NewShiprocketClient(config ClientConfig) (*ShiprocketClient, error) {
 		return nil, err
 	}
 
-	return &ShiprocketClient{
+	shiprocketClient = ShiprocketClient{
 		config: config,
 		tokenConfig: TokenConfig{
 			Token:             token,
 			CreatedOn:         time.Now(),
-			NextRefreshOnTime: time.Now().Add(8 * time.Hour),
+			NextRefreshOnTime: time.Now().Add((7 * 60) + 30*time.Minute), //token will updated after 7:30 hrs
 		},
-	}, nil
+	}
+
+	return &shiprocketClient, nil
 }
 
 func GetToken(config ClientConfig) (string, error) {
