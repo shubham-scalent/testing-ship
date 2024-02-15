@@ -8,8 +8,8 @@ import (
 )
 
 type ShiprocketClient struct {
-	Config ClientConfig
-	Token  tokenConfig
+	config      ClientConfig
+	tokenConfig TokenConfig
 }
 
 func NewShiprocketClient(config ClientConfig) (*ShiprocketClient, error) {
@@ -20,8 +20,8 @@ func NewShiprocketClient(config ClientConfig) (*ShiprocketClient, error) {
 	}
 
 	return &ShiprocketClient{
-		Config: config,
-		Token: tokenConfig{
+		config: config,
+		tokenConfig: TokenConfig{
 			Token:             token,
 			CreatedOn:         time.Now(),
 			NextRefreshOnTime: time.Now().Add(8 * time.Hour),

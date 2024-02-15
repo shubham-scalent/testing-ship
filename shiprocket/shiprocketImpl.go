@@ -2,7 +2,7 @@ package shiprocket
 
 func (s *ShiprocketClient) GetAvailableCouriers(request CourierAvailabityRequest) (*CourierAvailabityResponse, error) {
 	// Create a new request
-	resp, err := SendRequest("GET", "/v1/external/courier/serviceability/", s.Config.BaseURL, s.Token.Token, request)
+	resp, err := SendRequest("GET", "/v1/external/courier/serviceability/", s.config.BaseURL, s.tokenConfig.Token, request)
 	if err != nil {
 		return nil, err
 	}

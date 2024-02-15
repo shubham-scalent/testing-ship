@@ -8,7 +8,7 @@ type ClientConfig struct {
 	Password string
 }
 
-type tokenConfig struct {
+type TokenConfig struct {
 	Token             string
 	CreatedOn         time.Time
 	NextRefreshOnTime time.Time
