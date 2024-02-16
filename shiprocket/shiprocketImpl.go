@@ -17,3 +17,21 @@ func (s *ShiprocketClient) GetAvailableCouriers(request CourierAvailabityRequest
 
 	return &response, nil
 }
+
+func (s *ShiprocketClient) CreateOrder(request CreateOrderRequest) (*CreateOrderResponse, error) {
+	// Create a new request
+	resp, err := SendRequest("GET", "/v1/external/orders/create/adhoc", s.config.BaseURL, s.tokenConfig.Token, request)
+	if err != nil {
+		return nil, err
+	}
+
+	defer resp.Body.Close()
+
+	var response CreateOrderResponse
+	err = ReadResponse(resp, &response)
+	if err != nil {
+		return nil, err
+	}
+
+	return &response, nil
+}

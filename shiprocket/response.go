@@ -102,3 +102,14 @@ type CourierAvailabityResponse struct {
 	Status                       int           `json:"status"`
 	UserInsuranceManadatory      bool          `json:"user_insurance_manadatory"`
 }
+
+type CreateOrderResponse struct {
+	AwbCode                interface{} `json:"awb_code"`
+	CourierCompanyID       interface{} `json:"courier_company_id"`
+	CourierName            interface{} `json:"courier_name"`
+	OnboardingCompletedNow int64       `json:"onboarding_completed_now"`
+	OrderID                int64       `json:"order_id"`
+	ShipmentID             int64       `json:"shipment_id"`
+	Status                 string      `json:"status"`
+	StatusCode             int64       `json:"status_code"`
+}
