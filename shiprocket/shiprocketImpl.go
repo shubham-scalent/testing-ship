@@ -20,7 +20,7 @@ func (s *ShiprocketClient) GetAvailableCouriers(request CourierAvailabityRequest
 
 func (s *ShiprocketClient) CreateOrder(request CreateOrderRequest) (*CreateOrderResponse, error) {
 	// Create a new request
-	resp, err := SendRequest("GET", "/v1/external/orders/create/adhoc", s.Config.BaseURL, s.TokenConfig.Token, request)
+	resp, err := SendRequest("POST", "/v1/external/orders/create/adhoc", s.Config.BaseURL, s.TokenConfig.Token, request)
 	if err != nil {
 		return nil, err
 	}
