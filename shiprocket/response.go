@@ -4,6 +4,12 @@ type ClientResponse struct {
 	Token string `json:"token"`
 }
 
+type ErrorResponse struct {
+	StatusCode int                 `json:"status_code"`
+	Message    string              `json:"message"`
+	Errors     map[string][]string `json:"errors"`
+}
+
 type CourierAvailabityResponse struct {
 	CompanyAutoShipmentInsuranceSetting bool `json:"company_auto_shipment_insurance_setting"`
 	CovidZones                          struct {

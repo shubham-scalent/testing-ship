@@ -48,3 +48,48 @@ func ReadResponse(resp *http.Response, result interface{}) error {
 
 	return nil
 }
+
+func SendRequest2(method, path string, BaseURL string, Token string, requestBody interface{}, responseBody interface{}) *ErrorResponse {
+
+	var errResp ErrorResponse
+
+	jsonData, err := json.Marshal(requestBody)
+	if err != nil {
+		return &errResp
+	}
+
+	req, err := http.NewRequest(method, BaseURL+path, bytes.NewBuffer(jsonData))
+	if err != nil {
+		return &errResp
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Authorization", "Bearer "+Token)
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return &errResp
+	}
+
+	respBody, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return &errResp
+	}
+
+	err = json.Unmarshal(respBody, &responseBody)
+	if err != nil {
+		return &errResp
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		var errResp ErrorResponse
+		err = json.Unmarshal(respBody, &errResp)
+		if err != nil {
+			return &errResp
+		}
+		return &errResp
+	}
+
+	return nil
+}
