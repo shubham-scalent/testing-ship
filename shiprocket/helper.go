@@ -77,17 +77,17 @@ func SendRequest2(method, path string, BaseURL string, Token string, requestBody
 		return &errResp
 	}
 
-	err = json.Unmarshal(respBody, &responseBody)
-	if err != nil {
-		return &errResp
-	}
-
 	if resp.StatusCode != http.StatusOK {
 		var errResp ErrorResponse
 		err = json.Unmarshal(respBody, &errResp)
 		if err != nil {
 			return &errResp
 		}
+		return &errResp
+	}
+
+	err = json.Unmarshal(respBody, &responseBody)
+	if err != nil {
 		return &errResp
 	}
 
