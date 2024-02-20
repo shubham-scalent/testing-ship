@@ -22,7 +22,7 @@ func (s *ShiprocketClient) CreateOrder(request CreateOrderRequest) (*CreateOrder
 
 	var response CreateOrderResponse
 
-	errResp := SendRequest2("POST", "/v1/external/orders/create/adhoc", s.Config.BaseURL, s.TokenConfig.Token, request, response)
+	errResp := SendRequest2("POST", "/v1/external/orders/create/adhoc", s.Config.BaseURL, s.TokenConfig.Token, request, &response)
 	if errResp != nil {
 		return nil, errResp
 	}
