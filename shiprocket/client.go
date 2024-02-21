@@ -8,8 +8,8 @@ import (
 )
 
 type ShiprocketClient struct {
-	Config      ClientConfig
-	TokenConfig TokenConfig
+	config      ClientConfig
+	tokenConfig TokenConfig
 }
 
 var shiprocketClient ShiprocketClient
@@ -22,8 +22,8 @@ func NewShiprocketClient(config ClientConfig) (*ShiprocketClient, error) {
 	}
 
 	shiprocketClient = ShiprocketClient{
-		Config: config,
-		TokenConfig: TokenConfig{
+		config: config,
+		tokenConfig: TokenConfig{
 			Token:             token,
 			CreatedOn:         time.Now(),
 			NextRefreshOnTime: time.Now().Add((7 * 60) + 30*time.Minute), //token will updated after 7:30 hrs

@@ -55,3 +55,20 @@ type CreateOrderRequest struct {
 	TransactionCharges   int64   `json:"transaction_charges"`
 	Weight               float64 `json:"weight"`
 }
+
+type GenerateInvoiceRequest struct {
+	Ids []int `json:"ids"`
+}
+
+type GenerateManifestRequest struct {
+	ShipmentID []int `json:"shipment_id"`
+}
+
+type GenerateLabelRequest struct {
+	ShipmentID []int `json:"shipment_id"`
+}
+
+type GenerateAWBRequest struct {
+	CourierID  string `json:"courier_id"`
+	ShipmentID string `json:"shipment_id"`
+}
