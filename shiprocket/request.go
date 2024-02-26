@@ -9,24 +9,24 @@ type CourierAvailabityRequest struct {
 }
 
 type CreateOrderRequest struct {
-	BillingAddress      string `json:"billing_address"`
-	BillingAddress2     string `json:"billing_address_2"`
-	BillingCity         string `json:"billing_city"`
-	BillingCountry      string `json:"billing_country"`
-	BillingCustomerName string `json:"billing_customer_name"`
-	BillingEmail        string `json:"billing_email"`
-	BillingLastName     string `json:"billing_last_name"`
-	BillingPhone        string `json:"billing_phone"`
-	BillingPincode      string `json:"billing_pincode"`
-	BillingState        string `json:"billing_state"`
-	Breadth             int64  `json:"breadth"`
-	ChannelID           string `json:"channel_id"`
-	Comment             string `json:"comment"`
-	GiftwrapCharges     int64  `json:"giftwrap_charges"`
-	Height              int64  `json:"height"`
-	Length              int64  `json:"length"`
-	OrderDate           string `json:"order_date"`
-	OrderID             string `json:"order_id"`
+	BillingAddress      string  `json:"billing_address"`
+	BillingAddress2     string  `json:"billing_address_2"`
+	BillingCity         string  `json:"billing_city"`
+	BillingCountry      string  `json:"billing_country"`
+	BillingCustomerName string  `json:"billing_customer_name"`
+	BillingEmail        string  `json:"billing_email"`
+	BillingLastName     string  `json:"billing_last_name"`
+	BillingPhone        string  `json:"billing_phone"`
+	BillingPincode      string  `json:"billing_pincode"`
+	BillingState        string  `json:"billing_state"`
+	Breadth             float64 `json:"breadth"`
+	ChannelID           string  `json:"channel_id"`
+	Comment             string  `json:"comment"`
+	GiftwrapCharges     int64   `json:"giftwrap_charges"`
+	Height              float64 `json:"height"`
+	Length              float64 `json:"length"`
+	OrderDate           string  `json:"order_date"`
+	OrderID             string  `json:"order_id"`
 	OrderItems          []struct {
 		Discount     string `json:"discount"`
 		Hsn          int64  `json:"hsn"`
