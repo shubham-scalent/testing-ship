@@ -14,9 +14,9 @@ type ShiprocketClient struct {
 
 var shiprocketClient ShiprocketClient
 
-func NewShiprocketClient(config ClientConfig) (*ShiprocketClient, error) {
+func NewShiprocketClient(config *ClientConfig) (*ShiprocketClient, error) {
 
-	token, err := GetToken(config)
+	token, err := GetToken(*config)
 	if err != nil {
 		return nil, err
 	}
@@ -24,7 +24,7 @@ func NewShiprocketClient(config ClientConfig) (*ShiprocketClient, error) {
 	config.baseURL = BASE_URL
 
 	shiprocketClient = ShiprocketClient{
-		config: config,
+		config: *config,
 		tokenConfig: TokenConfig{
 			Token:             token,
 			CreatedOn:         time.Now(),
