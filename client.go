@@ -16,12 +16,12 @@ var shiprocketClient ShiprocketClient
 
 func NewShiprocketClient(config *ClientConfig) (*ShiprocketClient, error) {
 
+	config.baseURL = BASE_URL
+
 	token, err := GetToken(*config)
 	if err != nil {
 		return nil, err
 	}
-
-	config.baseURL = BASE_URL
 
 	shiprocketClient = ShiprocketClient{
 		config: *config,
