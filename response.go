@@ -57,7 +57,7 @@ type CourierAvailabityResponse struct {
 			Odablock              bool    `json:"odablock"`
 			OtherCharges          int     `json:"other_charges"`
 			Others                any     `json:"others"`
-			PickupAvailability    int     `json:"pickup_availability"`
+			PickupAvailability    string  `json:"pickup_availability"`
 			PickupPerformance     float64 `json:"pickup_performance"`
 			PickupPriority        string  `json:"pickup_priority"`
 			PickupSupressHours    int     `json:"pickup_supress_hours"`
