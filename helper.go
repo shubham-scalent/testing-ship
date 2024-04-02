@@ -13,11 +13,13 @@ func SendRequest(method, path string, BaseURL string, Token string, requestBody 
 
 	jsonData, err := json.Marshal(requestBody)
 	if err != nil {
+		errResp.Message = err.Error()
 		return &errResp
 	}
 
 	req, err := http.NewRequest(method, BaseURL+path, bytes.NewBuffer(jsonData))
 	if err != nil {
+		errResp.Message = err.Error()
 		return &errResp
 	}
 
@@ -27,19 +29,22 @@ func SendRequest(method, path string, BaseURL string, Token string, requestBody 
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
+		errResp.Message = err.Error()
 		return &errResp
 	}
 	defer resp.Body.Close()
 
 	respBody, err := io.ReadAll(resp.Body)
 	if err != nil {
+		errResp.Message = err.Error()
 		return &errResp
 	}
 
 	if resp.StatusCode != http.StatusOK {
-		var errResp ErrorResponse
-		err = json.Unmarshal(respBody, &errResp)
+		var apiResponse ErrorResponse
+		err = json.Unmarshal(respBody, &apiResponse)
 		if err != nil {
+			errResp.Message = err.Error()
 			return &errResp
 		}
 		return &errResp
@@ -47,6 +52,7 @@ func SendRequest(method, path string, BaseURL string, Token string, requestBody 
 
 	err = json.Unmarshal(respBody, &responseBody)
 	if err != nil {
+		errResp.Message = err.Error()
 		return &errResp
 	}
 
