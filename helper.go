@@ -47,7 +47,7 @@ func SendRequest(method, path string, BaseURL string, Token string, requestBody 
 			errResp.Message = err.Error()
 			return &errResp
 		}
-		return &errResp
+		return &apiResponse
 	}
 
 	err = json.Unmarshal(respBody, &responseBody)
