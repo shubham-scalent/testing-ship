@@ -79,7 +79,3 @@ type TrackingThroughOrderIDRequest struct {
 	OrderID   int `json:"order_id"`
 	ChannelID int `json:"channel_id"`
 }
-
-type TrackingThroughShipmentIDRequest struct {
-	ShipmentID int `json:"shipmentID"`
-}

@@ -14,11 +14,11 @@ func (s *ShiprocketClient) TrackingThroughOrderID(request TrackingThroughOrderID
 	return &response, nil
 }
 
-func (s *ShiprocketClient) TrackingThroughShipmentID(request TrackingThroughShipmentIDRequest) (*TrackingThroughShipmentIDResponse, *ErrorResponse) {
+func (s *ShiprocketClient) TrackingThroughShipmentID(shipmentID int) (*TrackingThroughShipmentIDResponse, *ErrorResponse) {
 	var response TrackingThroughShipmentIDResponse
 
-	endpoint := fmt.Sprintf("/v1/external/courier/shipment/track/%d", request.ShipmentID)
-	errResp := SendRequest("GET", endpoint, BASE_URL, s.tokenConfig.Token, request, &response)
+	endpoint := fmt.Sprintf("/v1/external/courier/shipment/track/%d", shipmentID)
+	errResp := SendRequest("GET", endpoint, BASE_URL, s.tokenConfig.Token, nil, &response)
 	if errResp != nil {
 		return nil, errResp
 	}
