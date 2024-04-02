@@ -209,7 +209,7 @@ type TrackingThroughOrderIDResponse []struct {
 			Status   string `json:"status"`
 			Activity string `json:"activity"`
 			Location string `json:"location"`
-			SrStatus string `json:"sr-status"`
+			SrStatus int    `json:"sr-status"`
 		} `json:"shipment_track_activities"`
 		TrackURL string `json:"track_url"`
 		Etd      string `json:"etd"`
