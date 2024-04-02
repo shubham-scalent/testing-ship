@@ -76,6 +76,6 @@ type GenerateAWBRequest struct {
 }
 
 type TrackingThroughOrderIDRequest struct {
-	OrderID   int `json:"order_id"`
-	ChannelID int `json:"channel_id"`
+	OrderID   string `json:"order_id"`
+	ChannelID int    `json:"channel_id"`
 }
