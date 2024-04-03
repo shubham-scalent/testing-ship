@@ -71,7 +71,7 @@ type CourierAvailabityResponse struct {
 			RealtimeTracking       string  `json:"realtime_tracking"`
 			Region                 int     `json:"region"`
 			RtoCharges             float64 `json:"rto_charges"`
-			RtoPerformance         int     `json:"rto_performance"`
+			RtoPerformance         float64 `json:"rto_performance"`
 			SecondsLeftForPickup   int     `json:"seconds_left_for_pickup"`
 			SecureShipmentDisabled bool    `json:"secure_shipment_disabled"`
 			ShipType               int     `json:"ship_type"`
