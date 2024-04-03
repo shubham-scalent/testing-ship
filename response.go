@@ -78,18 +78,12 @@ type CourierAvailabityResponse struct {
 			State                  string      `json:"state"`
 			SuppressDate           string      `json:"suppress_date"`
 			SuppressText           string      `json:"suppress_text"`
-			SuppressionDates       *struct {
-				AnythingArray         []interface{}
-				SuppressionDatesClass *struct {
-					ActionOn    string `json:"action_on"`
-					BlockReason string `json:"block_reason"`
-				}
-			} `json:"suppression_dates"`
-			SurfaceMaxWeight    string  `json:"surface_max_weight"`
-			TrackingPerformance float64 `json:"tracking_performance"`
-			VolumetricMaxWeight *int64  `json:"volumetric_max_weight"`
-			WeightCases         float64 `json:"weight_cases"`
-			Zone                string  `json:"zone"`
+			SuppressionDates       interface{} `json:"suppression_dates"`
+			SurfaceMaxWeight       string      `json:"surface_max_weight"`
+			TrackingPerformance    float64     `json:"tracking_performance"`
+			VolumetricMaxWeight    *int64      `json:"volumetric_max_weight"`
+			WeightCases            float64     `json:"weight_cases"`
+			Zone                   string      `json:"zone"`
 		} `json:"available_courier_companies"`
 		ChildCourierID            interface{} `json:"child_courier_id"`
 		IsRecommendationEnabled   int64       `json:"is_recommendation_enabled"`
