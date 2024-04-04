@@ -17,7 +17,9 @@ func SendRequest(method, path string, BaseURL string, Token string, requestBody 
 		return &errResp
 	}
 
-	req, err := http.NewRequest(method, BaseURL+path, bytes.NewBuffer(jsonData))
+	url := BaseURL + path
+
+	req, err := http.NewRequest(method, url, bytes.NewBuffer(jsonData))
 	if err != nil {
 		errResp.Message = err.Error()
 		return &errResp
