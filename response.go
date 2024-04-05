@@ -247,11 +247,12 @@ type TrackingThroughShipmentIDResponse struct {
 			Edd                 string `json:"edd"`
 		} `json:"shipment_track"`
 		ShipmentTrackActivities []struct {
-			Date     string `json:"date"`
-			Status   string `json:"status"`
-			Activity string `json:"activity"`
-			Location string `json:"location"`
-			SrStatus int    `json:"sr-status"`
+			Date          string `json:"date"`
+			Status        string `json:"status"`
+			Activity      string `json:"activity"`
+			Location      string `json:"location"`
+			SrStatus      int    `json:"sr-status"`
+			SrStatusLabel string `json:"sr-status-label"`
 		} `json:"shipment_track_activities"`
 		TrackURL string `json:"track_url"`
 		Etd      string `json:"etd"`
