@@ -1,5 +1,7 @@
 package shiprocket
 
+import "time"
+
 type ClientResponse struct {
 	Token string `json:"token"`
 }
@@ -257,4 +259,78 @@ type TrackingThroughShipmentIDResponse struct {
 		TrackURL string `json:"track_url"`
 		Etd      string `json:"etd"`
 	} `json:"tracking_data"`
+}
+
+type AddPickUpLocationResponse struct {
+	Success bool `json:"success"`
+	Address struct {
+		CompanyID      int       `json:"company_id"`
+		PickupCode     string    `json:"pickup_code"`
+		UpdatedAt      time.Time `json:"updated_at"`
+		CreatedAt      time.Time `json:"created_at"`
+		ID             int       `json:"id"`
+		Address        string    `json:"address"`
+		Address2       string    `json:"address_2"`
+		AddressType    any       `json:"address_type"`
+		City           string    `json:"city"`
+		State          string    `json:"state"`
+		Country        string    `json:"country"`
+		Gstin          any       `json:"gstin"`
+		PinCode        string    `json:"pin_code"`
+		Phone          string    `json:"phone"`
+		Email          string    `json:"email"`
+		Name           string    `json:"name"`
+		AlternatePhone any       `json:"alternate_phone"`
+		Lat            any       `json:"lat"`
+		Long           any       `json:"long"`
+		Status         int       `json:"status"`
+		RtoAddressID   int       `json:"rto_address_id"`
+		ExtraInfo      string    `json:"extra_info"`
+		PhoneVerified  int       `json:"phone_verified"`
+	} `json:"address"`
+	PickupID    int    `json:"pickup_id"`
+	CompanyName string `json:"company_name"`
+	FullName    string `json:"full_name"`
+}
+
+type GetAllPickUpLocationResponse struct {
+	Data struct {
+		ShippingAddress []struct {
+			ID                   int    `json:"id"`
+			PickupLocation       string `json:"pickup_location"`
+			AddressType          string `json:"address_type"`
+			Address              string `json:"address"`
+			Address2             string `json:"address_2"`
+			UpdatedAddress       bool   `json:"updated_address"`
+			OldAddress           string `json:"old_address"`
+			OldAddress2          string `json:"old_address2"`
+			City                 string `json:"city"`
+			State                string `json:"state"`
+			Country              string `json:"country"`
+			PinCode              string `json:"pin_code"`
+			Email                string `json:"email"`
+			IsFirstMilePickup    int    `json:"is_first_mile_pickup"`
+			Phone                string `json:"phone"`
+			Name                 string `json:"name"`
+			CompanyID            int    `json:"company_id"`
+			Gstin                string `json:"gstin"`
+			VendorName           any    `json:"vendor_name"`
+			Status               int    `json:"status"`
+			PhoneVerified        int    `json:"phone_verified"`
+			Lat                  string `json:"lat"`
+			Long                 string `json:"long"`
+			OpenTime             string `json:"open_time"`
+			CloseTime            string `json:"close_time"`
+			WarehouseCode        any    `json:"warehouse_code"`
+			AlternatePhone       string `json:"alternate_phone"`
+			RtoAddressID         int    `json:"rto_address_id"`
+			LatLongStatus        int    `json:"lat_long_status"`
+			New                  int    `json:"new"`
+			AssociatedRtoAddress any    `json:"associated_rto_address"`
+		} `json:"shipping_address"`
+		AllowMore        string `json:"allow_more"`
+		IsBlackboxSeller bool   `json:"is_blackbox_seller"`
+		CompanyName      string `json:"company_name"`
+		RecentAddresses  []any  `json:"recent_addresses"`
+	} `json:"data"`
 }

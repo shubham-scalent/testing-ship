@@ -79,3 +79,21 @@ type TrackingThroughOrderIDRequest struct {
 	OrderID   string `json:"order_id"`
 	ChannelID int    `json:"channel_id"`
 }
+
+type AddPickUpLocationRequest struct {
+	PickupLocation string  `json:"pickup_location"`
+	Name           string  `json:"name"`
+	Email          string  `json:"email"`
+	Phone          string  `json:"phone"`
+	Address        string  `json:"address"`
+	Address2       string  `json:"address_2"`
+	City           string  `json:"city"`
+	State          string  `json:"state"`
+	Country        string  `json:"country"`
+	PinCode        string  `json:"pin_code"`
+	Lat            float64 `json:"lat"`
+	Long           float64 `json:"long"`
+	AddressType    string  `json:"address_type"`
+	VendorName     string  `json:"vendor_name"`
+	GSTIN          string  `json:"gstin"`
+}
