@@ -27,11 +27,11 @@ type CourierAvailabityResponse struct {
 			BaseWeight             string      `json:"base_weight"`
 			Blocked                int64       `json:"blocked"`
 			CallBeforeDelivery     string      `json:"call_before_delivery"`
-			ChargeWeight           int64       `json:"charge_weight"`
+			ChargeWeight           float64     `json:"charge_weight"`
 			City                   string      `json:"city"`
 			Cod                    int64       `json:"cod"`
-			CodCharges             int64       `json:"cod_charges"`
-			CodMultiplier          int64       `json:"cod_multiplier"`
+			CodCharges             float64     `json:"cod_charges"`
+			CodMultiplier          float64     `json:"cod_multiplier"`
 			Cost                   string      `json:"cost"`
 			CourierCompanyID       int64       `json:"courier_company_id"`
 			CourierName            string      `json:"courier_name"`
