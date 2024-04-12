@@ -71,8 +71,8 @@ type GenerateLabelRequest struct {
 }
 
 type GenerateAWBRequest struct {
-	CourierID  string `json:"courier_id"`
-	ShipmentID string `json:"shipment_id"`
+	CourierID  int `json:"courier_id"`
+	ShipmentID int `json:"shipment_id"`
 }
 
 type TrackingThroughOrderIDRequest struct {
