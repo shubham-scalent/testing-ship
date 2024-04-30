@@ -97,3 +97,11 @@ type AddPickUpLocationRequest struct {
 	VendorName     string  `json:"vendor_name"`
 	GSTIN          string  `json:"gstin"`
 }
+
+type CancelShipmentRequest struct {
+	Awbs []string `json:"awbs"`
+}
+
+type ShipmentPickUpRequest struct {
+	ShipmentID []int64 `json:"shipment_id"`
+}

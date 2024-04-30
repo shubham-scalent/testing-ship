@@ -334,3 +334,22 @@ type GetAllPickUpLocationResponse struct {
 		RecentAddresses  []any  `json:"recent_addresses"`
 	} `json:"data"`
 }
+
+type CancelShipmentResponse struct {
+	Message string `json:"message"`
+}
+type ShipmentPickUpResponse struct {
+	PickupStatus int64 `json:"pickup_status"`
+	Response     struct {
+		PickupScheduledDate string `json:"pickup_scheduled_date"`
+		PickupTokenNumber   string `json:"pickup_token_number"`
+		Status              int64  `json:"status"`
+		Others              string `json:"others"`
+		PickupGeneratedDate struct {
+			Date         string `json:"date"`
+			TimezoneType int64  `json:"timezone_type"`
+			Timezone     string `json:"timezone"`
+		} `json:"pickup_generated_date"`
+		Data string `json:"data"`
+	} `json:"response"`
+}
