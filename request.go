@@ -103,5 +103,5 @@ type CancelShipmentRequest struct {
 }
 
 type ShipmentPickUpRequest struct {
-	ShipmentID []int64 `json:"shipment_id"`
+	ShipmentID []int `json:"shipment_id"`
 }
