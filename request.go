@@ -105,3 +105,7 @@ type CancelShipmentRequest struct {
 type ShipmentPickUpRequest struct {
 	ShipmentID []int `json:"shipment_id"`
 }
+
+type CancelOrderRequest struct {
+	IDs []int `json:"ids"`
+}

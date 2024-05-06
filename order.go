@@ -9,3 +9,12 @@ func (s *ShiprocketClient) CreateOrder(request CreateOrderRequest) (*CreateOrder
 
 	return &response, nil
 }
+
+func (s *ShiprocketClient) CancelOrder(request CancelOrderRequest) *ErrorResponse {
+	errResp := SendRequest("POST", "/v1/external/orders/cancel", BASE_URL, s.tokenConfig.Token, request, nil)
+	if errResp != nil {
+		return errResp
+	}
+
+	return nil
+}
