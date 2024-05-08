@@ -353,3 +353,17 @@ type ShipmentPickUpResponse struct {
 		Data string `json:"data"`
 	} `json:"response"`
 }
+
+type GetLocalityDetailsResponse struct {
+	Success         bool `json:"success"`
+	PostcodeDetails struct {
+		Postcode  string   `json:"postcode"`
+		City      string   `json:"city"`
+		Locality  []string `json:"locality"`
+		State     string   `json:"state"`
+		StateCode string   `json:"state_code"`
+		Longitude string   `json:"longitude"`
+		Latitude  string   `json:"latitude"`
+		Country   string   `json:"country"`
+	} `json:"postcode_details"`
+}

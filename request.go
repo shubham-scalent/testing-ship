@@ -109,3 +109,7 @@ type ShipmentPickUpRequest struct {
 type CancelOrderRequest struct {
 	IDs []int `json:"ids"`
 }
+
+type GetLocalityDetailsRequest struct {
+	Postcode string `json:"postcode"`
+}
