@@ -111,5 +111,5 @@ type CancelOrderRequest struct {
 }
 
 type GetLocalityDetailsRequest struct {
-	Postcode string `json:"postcode"`
+	Postcode int `json:"postcode"`
 }
