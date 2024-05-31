@@ -6,6 +6,7 @@ type CourierAvailabityRequest struct {
 	OrderID          *int    `json:"order_id"`
 	Cod              int     `json:"cod"`
 	Weight           float64 `json:"weight"`
+	DeclaredValue    int     `json:"declared_value"`
 }
 
 type CreateOrderRequest struct {
