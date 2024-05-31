@@ -36,7 +36,7 @@ type CourierAvailabityResponse struct {
 			CourierCompanyID       int64       `json:"courier_company_id"`
 			CourierName            string      `json:"courier_name"`
 			CourierType            string      `json:"courier_type"`
-			CoverageCharges        int64       `json:"coverage_charges"`
+			CoverageCharges        float64     `json:"coverage_charges"`
 			CutoffTime             string      `json:"cutoff_time"`
 			DeliveryBoyContact     string      `json:"delivery_boy_contact"`
 			DeliveryPerformance    float64     `json:"delivery_performance"`
