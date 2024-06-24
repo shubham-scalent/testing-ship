@@ -342,7 +342,7 @@ type ShipmentPickUpResponse struct {
 	PickupStatus int64 `json:"pickup_status"`
 	Response     struct {
 		PickupScheduledDate string `json:"pickup_scheduled_date"`
-		PickupTokenNumber   int    `json:"pickup_token_number"`
+		PickupTokenNumber   string `json:"pickup_token_number"`
 		Status              int64  `json:"status"`
 		Others              string `json:"others"`
 		PickupGeneratedDate struct {
