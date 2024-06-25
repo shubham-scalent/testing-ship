@@ -3,8 +3,10 @@ package shiprocket
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 )
 
 func SendRequest(method, path string, BaseURL string, Token string, requestBody interface{}, responseBody interface{}) *ErrorResponse {
@@ -61,43 +63,56 @@ func SendRequest(method, path string, BaseURL string, Token string, requestBody 
 	return nil
 }
 
-// func SendRequest(method, path string, BaseURL string, Token string, body interface{}) (*http.Response, error) {
-// 	jsonData, err := json.Marshal(body)
-// 	if err != nil {
-// 		return nil, err
-// 	}
+func SendRequestWithParams(method, path string, BaseURL string, Token string, requestBody map[string]interface{}, responseBody interface{}) *ErrorResponse {
 
-// 	req, err := http.NewRequest(method, BaseURL+path, bytes.NewBuffer(jsonData))
-// 	if err != nil {
-// 		return nil, err
-// 	}
+	var errResp ErrorResponse
 
-// 	req.Header.Set("Content-Type", "application/json")
-// 	req.Header.Set("Authorization", "Bearer "+Token)
+	params := url.Values{}
+	for key, value := range requestBody {
+		params.Add(key, fmt.Sprintf("%v", value))
+	}
 
-// 	client := &http.Client{}
-// 	resp, err := client.Do(req)
-// 	if err != nil {
-// 		return nil, err
-// 	}
+	url := BaseURL + path
+	fullURL := fmt.Sprintf("%s?%s", url, params.Encode())
 
-// 	return resp, err
-// }
+	req, err := http.NewRequest(method, fullURL, nil)
+	if err != nil {
+		errResp.Message = err.Error()
+		return &errResp
+	}
 
-// func ReadResponse(resp *http.Response, result interface{}) error {
-// 	if resp.StatusCode != http.StatusOK {
-// 		return fmt.Errorf("bad status code: %d", resp.StatusCode)
-// 	}
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Authorization", "Bearer "+Token)
 
-// 	body, err := io.ReadAll(resp.Body)
-// 	if err != nil {
-// 		return err
-// 	}
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		errResp.Message = err.Error()
+		return &errResp
+	}
+	defer resp.Body.Close()
 
-// 	err = json.Unmarshal(body, result)
-// 	if err != nil {
-// 		return err
-// 	}
+	respBody, err := io.ReadAll(resp.Body)
+	if err != nil {
+		errResp.Message = err.Error()
+		return &errResp
+	}
 
-// 	return nil
-// }
+	if resp.StatusCode != http.StatusOK {
+		var apiResponse ErrorResponse
+		err = json.Unmarshal(respBody, &apiResponse)
+		if err != nil {
+			errResp.Message = err.Error()
+			return &errResp
+		}
+		return &apiResponse
+	}
+
+	err = json.Unmarshal(respBody, &responseBody)
+	if err != nil {
+		errResp.Message = err.Error()
+		return &errResp
+	}
+
+	return nil
+}
