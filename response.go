@@ -367,3 +367,9 @@ type GetLocalityDetailsResponse struct {
 		Country   interface{}   `json:"country"`
 	} `json:"postcode_details"`
 }
+
+type GetWalletBalanceResponse struct {
+	Data struct {
+		BalanceAmount interface{} `json:"balance_amount"`
+	} `json:"data"`
+}
