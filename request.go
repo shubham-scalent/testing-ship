@@ -117,3 +117,27 @@ type CancelOrderRequest struct {
 type GetLocalityDetailsRequest struct {
 	Postcode int `json:"postcode"`
 }
+
+type GetAllNDRShipmentsRequest struct {
+	Page      int    `json:"page"`
+	PerPage   int    `json:"per_page"`
+	To        string `json:"to"`
+	From      string `json:"from"`
+	SearchAWB string `json:"search"`
+}
+
+type GetSpecificNDRShipmentDetailsRequest struct {
+	AWBNo string `json:"awb"`
+}
+
+type NDRActionRequest struct {
+	Action       string `json:"action"`
+	Comments     string `json:"comments"`
+	Phone        string `json:"phone"`
+	ProofAudio   string `json:"proof_audio"`
+	ProofImage   string `json:"proof_image"`
+	Remarks      string `json:"remarks"`
+	Address1     string `json:"address1"`
+	Address2     string `json:"address2"`
+	DeferredDate string `json:"deferred_date"`
+}

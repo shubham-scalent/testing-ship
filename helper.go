@@ -116,3 +116,51 @@ func SendRequestWithParams(method, path string, BaseURL string, Token string, re
 
 	return nil
 }
+
+func SendRequestNil(method, path string, BaseURL string, Token string, requestBody interface{}, responseBody interface{}) *ErrorResponse {
+
+	var errResp ErrorResponse
+
+	url := BaseURL + path
+
+	req, err := http.NewRequest(method, url, nil)
+	if err != nil {
+		errResp.Message = err.Error()
+		return &errResp
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Authorization", "Bearer "+Token)
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		errResp.Message = err.Error()
+		return &errResp
+	}
+	defer resp.Body.Close()
+
+	respBody, err := io.ReadAll(resp.Body)
+	if err != nil {
+		errResp.Message = err.Error()
+		return &errResp
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		var apiResponse ErrorResponse
+		err = json.Unmarshal(respBody, &apiResponse)
+		if err != nil {
+			errResp.Message = err.Error()
+			return &errResp
+		}
+		return &apiResponse
+	}
+
+	err = json.Unmarshal(respBody, &responseBody)
+	if err != nil {
+		errResp.Message = err.Error()
+		return &errResp
+	}
+
+	return nil
+}

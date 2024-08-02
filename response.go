@@ -373,3 +373,130 @@ type GetWalletBalanceResponse struct {
 		BalanceAmount interface{} `json:"balance_amount"`
 	} `json:"data"`
 }
+
+type GetSpecificNDRShipmentDetailsResponse struct {
+	Data struct {
+		ID                interface{} `json:"id"`
+		ShipmentID        interface{} `json:"shipment_id"`
+		CustomerName      interface{} `json:"customer_name"`
+		CustomerEmail     interface{} `json:"customer_email"`
+		CustomerPhone     interface{} `json:"customer_phone"`
+		CustomerAddress   interface{} `json:"customer_address"`
+		CustomerAddress2  interface{} `json:"customer_address_2"`
+		CustomerCity      interface{} `json:"customer_city"`
+		CustomerState     interface{} `json:"customer_state"`
+		CustomerPincode   interface{} `json:"customer_pincode"`
+		PaymentStatus     interface{} `json:"payment_status"`
+		Status            interface{} `json:"status"`
+		StatusCode        interface{} `json:"status_code"`
+		PaymentMethod     interface{} `json:"payment_method"`
+		CreatedAt         interface{} `json:"created_at"`
+		Reason            interface{} `json:"reason"`
+		Attempts          interface{} `json:"attempts"`
+		NDRRaisedAt       interface{} `json:"ndr_raised_at"`
+		Courier           interface{} `json:"courier"`
+		AWBCode           interface{} `json:"awb_code"`
+		EscalationStatus  interface{} `json:"escalation_status"`
+		ProductName       interface{} `json:"product_name"`
+		ProductPrice      interface{} `json:"product_price"`
+		ShipmentChannelID interface{} `json:"shipment_channel_id"`
+		History           struct {
+			ID                          interface{} `json:"id"`
+			NdrID                       interface{} `json:"ndr_id"`
+			NDRReason                   interface{} `json:"ndr_reason"`
+			ActionBy                    interface{} `json:"action_by"`
+			NDRAttempt                  interface{} `json:"ndr_attempt"`
+			Medium                      interface{} `json:"medium"`
+			NDRPushStatus               interface{} `json:"ndr_push_status"`
+			Comment                     interface{} `json:"comment"`
+			CallCenterCallRecording     interface{} `json:"call_center_call_recording"`
+			CallCenterCallRecordingDate interface{} `json:"call_center_recording_date"`
+			ProofRecording              interface{} `json:"proof_recording"`
+			ProofImage                  interface{} `json:"proof_image"`
+			SMSResponse                 interface{} `json:"sms_response"`
+			NDRRaisedAt                 interface{} `json:"ndr_raised_at"`
+		} `json:"history"`
+		DeliveredDate      interface{} `json:"delivered_date"`
+		CancellationReason interface{} `json:"cancellation_reason"`
+	} `json:"data"`
+	Meta struct {
+		Pagination struct {
+			Total       interface{} `json:"total"`
+			Count       interface{} `json:"count"`
+			PerPage     interface{} `json:"per_page"`
+			CurrentPage interface{} `json:"current_page"`
+			TotalPages  interface{} `json:"total_pages"`
+			Links       interface{} `json:"links"`
+		} `json:"pagination"`
+	} `json:"meta"`
+}
+
+type GetAllNDRShipmentsResponse struct {
+	Data []struct {
+		ID                interface{} `json:"id"`
+		ShipmentID        interface{} `json:"shipment_id"`
+		CustomerName      interface{} `json:"customer_name"`
+		CustomerEmail     interface{} `json:"customer_email"`
+		CustomerPhone     interface{} `json:"customer_phone"`
+		CustomerAddress   interface{} `json:"customer_address"`
+		CustomerAddress2  interface{} `json:"customer_address_2"`
+		CustomerCity      interface{} `json:"customer_city"`
+		CustomerState     interface{} `json:"customer_state"`
+		CustomerPincode   interface{} `json:"customer_pincode"`
+		PaymentStatus     interface{} `json:"payment_status"`
+		Status            interface{} `json:"status"`
+		StatusCode        interface{} `json:"status_code"`
+		PaymentMethod     interface{} `json:"payment_method"`
+		CreatedAt         interface{} `json:"created_at"`
+		Reason            interface{} `json:"reason"`
+		Attempts          interface{} `json:"attempts"`
+		NDRRaisedAt       interface{} `json:"ndr_raised_at"`
+		Courier           interface{} `json:"courier"`
+		AWBCode           interface{} `json:"awb_code"`
+		EscalationStatus  interface{} `json:"escalation_status"`
+		ProductName       interface{} `json:"product_name"`
+		ProductPrice      interface{} `json:"product_price"`
+		ShipmentChannelID interface{} `json:"shipment_channel_id"`
+		History           struct {
+			ID                          interface{} `json:"id"`
+			NdrID                       interface{} `json:"ndr_id"`
+			NDRReason                   interface{} `json:"ndr_reason"`
+			ActionBy                    interface{} `json:"action_by"`
+			NDRAttempt                  interface{} `json:"ndr_attempt"`
+			Medium                      interface{} `json:"medium"`
+			NDRPushStatus               interface{} `json:"ndr_push_status"`
+			Comment                     interface{} `json:"comment"`
+			CallCenterCallRecording     interface{} `json:"call_center_call_recording"`
+			CallCenterCallRecordingDate interface{} `json:"call_center_recording_date"`
+			ProofRecording              interface{} `json:"proof_recording"`
+			ProofImage                  interface{} `json:"proof_image"`
+			SMSResponse                 interface{} `json:"sms_response"`
+			NDRRaisedAt                 interface{} `json:"ndr_raised_at"`
+		} `json:"history"`
+		DeliveredDate interface{} `json:"delivered_date"`
+	} `json:"data"`
+	Meta struct {
+		Pagination struct {
+			Total       interface{} `json:"total"`
+			Count       interface{} `json:"count"`
+			PerPage     interface{} `json:"per_page"`
+			CurrentPage interface{} `json:"current_page"`
+			TotalPages  interface{} `json:"total_pages"`
+			Links       struct {
+				Next interface{} `json:"next"`
+			} `json:"links"`
+		} `json:"pagination"`
+	} `json:"meta"`
+}
+
+type NDRActionResponse struct {
+	Status interface{} `json:"status"`
+}
+
+type GetDiscrepancyDataResponse struct {
+	Status interface{} `json:"status"`
+	Data   []struct {
+	} `json:"data"`
+	UpperFoldText interface{} `json:"upper_fold_text"`
+	LowerFildText interface{} `json:"lower_fild_text"`
+}
