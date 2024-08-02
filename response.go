@@ -375,9 +375,10 @@ type GetWalletBalanceResponse struct {
 }
 
 type GetSpecificNDRShipmentDetailsResponse struct {
-	Data struct {
+	Data []struct {
 		ID                interface{} `json:"id"`
 		ShipmentID        interface{} `json:"shipment_id"`
+		ChannelOrderID    interface{} `json:"channel_order_id"`
 		CustomerName      interface{} `json:"customer_name"`
 		CustomerEmail     interface{} `json:"customer_email"`
 		CustomerPhone     interface{} `json:"customer_phone"`
@@ -400,7 +401,7 @@ type GetSpecificNDRShipmentDetailsResponse struct {
 		ProductName       interface{} `json:"product_name"`
 		ProductPrice      interface{} `json:"product_price"`
 		ShipmentChannelID interface{} `json:"shipment_channel_id"`
-		History           struct {
+		History           []struct {
 			ID                          interface{} `json:"id"`
 			NdrID                       interface{} `json:"ndr_id"`
 			NDRReason                   interface{} `json:"ndr_reason"`
@@ -435,6 +436,7 @@ type GetAllNDRShipmentsResponse struct {
 	Data []struct {
 		ID                interface{} `json:"id"`
 		ShipmentID        interface{} `json:"shipment_id"`
+		ChannelOrderID    interface{} `json:"channel_order_id"`
 		CustomerName      interface{} `json:"customer_name"`
 		CustomerEmail     interface{} `json:"customer_email"`
 		CustomerPhone     interface{} `json:"customer_phone"`
